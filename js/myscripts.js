@@ -32,7 +32,7 @@ function addBrowserClass(){
 
 $(document).ready (function(){
 
-	//addBrowserClass();
+	addBrowserClass();
 
 });
 

@@ -5,6 +5,8 @@ foundation-wp-starter
 
 * The theme includes a `myplugins.js` (where you place all your plugin scripts) and a `myscripts.js` (where you place all your custom scripts) - Located in the `js` folder
 
+  * Theme adds a browser class to the `html` element by default by using the `addBrowserClass()` function defined in `myscripts.js` 
+
   * Feel free to delete the content in these files and start from scratch
 
 * Make sure you change the theme text domain located in the `functions.js` file to something that reflects your theme name

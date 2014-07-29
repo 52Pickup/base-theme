@@ -62,7 +62,7 @@ function load_scripts(){
    wp_deregister_script('jquery');
 
    // Register Libraries & Helpers
-   wp_register_script('modernizr', get_template_directory_uri() . '/js/vendor/custom.modernizr.js');
+   wp_register_script('modernizr', get_template_directory_uri() . '/js/vendor/modernizr.js');
    wp_register_script('jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js');
    wp_register_script('foundation', get_template_directory_uri() . '/js/foundation.min.js', array('modernizr','jquery'), true, true);
       
@@ -70,7 +70,7 @@ function load_scripts(){
    wp_register_script('myplugins', get_template_directory_uri() . '/js/myplugins.js', array('modernizr','jquery'), true, true);
    
    // Scripts
-   wp_register_script('myscripts', get_template_directory_uri() . '/js/myscripts.js', array('modernizr', 'jquery', 'foundation', 'plugins'), true, true);
+   wp_register_script('myscripts', get_template_directory_uri() . '/js/myscripts.js', array('modernizr', 'jquery', 'foundation', 'myplugins'), true, true);
    
    // Enqueue the scripts
    wp_enqueue_script('modernizr');

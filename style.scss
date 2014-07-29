@@ -15,6 +15,27 @@ Version: 1.0
   @return $pxWidth / 16 * 1rem;
 }
 
+// Mixins
+@mixin cssBorderRadius($size) {
+	-moz-border-radius: $size;
+	-webkit-border-radius: $size;
+	border-radius: $size;
+}
+
+@mixin cssBoxShadow($ydistance, $xdistance, $blur, $opacity){
+	-webkit-box-shadow: $ydistance $xdistance $blur rgba(0, 0, 0, $opacity);
+	-moz-box-shadow: $ydistance $xdistance $blur rgba(0, 0, 0, $opacity);
+	box-shadow: $ydistance $xdistance $blur rgba(0, 0, 0, $opacity);
+}
+
+@mixin transitionAll($duration, $ease){
+	-webkit-transition: all $duration $ease;
+	-moz-transition: all $duration $ease;
+	-ms-transition: all $duration $ease;
+	-o-transition: all $duration $ease;
+	transition: all $duration $ease;
+}
+
 /*******************************************
  * BEGIN GLOBAL STYLES
  *******************************************/
