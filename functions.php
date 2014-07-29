@@ -1,14 +1,16 @@
 <?php
 
+$theme_text_domain = 'foundation-starter';
+
 /*************************************************************************************
 *  Register Menus
 **************************************************************************************/
 
 /*if ( function_exists( 'register_nav_menus' ) ) {
    register_nav_menus( array(
-      'header-nav' => __( 'Header Navigation', 'health-wellness' ),
-      'main-nav' => __( 'Main Navigation', 'health-wellness' ),
-      'footer-nav' => __( 'Footer Navigation', 'health-wellness' )
+      'header-nav' => __( 'Header Navigation', $theme_text_domain ),
+      'main-nav' => __( 'Main Navigation', $theme_text_domain ),
+      'footer-nav' => __( 'Footer Navigation', $theme_text_domain )
    ) );
 }*/
 
@@ -21,18 +23,18 @@
 
    function hw_widgets_init() {
       register_sidebar( array(
-         'name' => __( 'Header Sidebar', 'health-wellness' ),
+         'name' => __( 'Header Sidebar', $theme_text_domain ),
          'id' => 'header-sidebar',
-         'description' => __( 'Header Sidebar', 'health-wellness' ),
+         'description' => __( 'Header Sidebar', $theme_text_domain ),
          'before_widget' => '',
          'after_widget' => '',
          'before_title' => '',
          'after_title' => '',
       ) );
       register_sidebar( array(
-         'name' => __( 'Main Sidebar', 'health-wellness' ),
+         'name' => __( 'Main Sidebar', $theme_text_domain ),
          'id' => 'main-sidebar',
-         'description' => __( 'Main Sidebar', 'health-wellness' ),
+         'description' => __( 'Main Sidebar', $theme_text_domain ),
          'before_widget' => '',
          'after_widget' => '',
          'before_title' => '',
@@ -60,16 +62,18 @@ function load_scripts(){
    wp_deregister_script('jquery');
 
    // Register Libraries & Helpers
+   wp_register_script('modernizr', get_template_directory_uri() . '/js/vendor/custom.modernizr.js');
    wp_register_script('jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js');
-   wp_register_script('foundation', get_template_directory_uri() . '/js/foundation.min.js', 'jquery', true, true);
+   wp_register_script('foundation', get_template_directory_uri() . '/js/foundation.min.js', array('modernizr','jquery'), true, true);
       
    // Plugins
-   wp_register_script('myplugins', get_template_directory_uri() . '/js/myplugins.js', 'jquery', true, true);
+   wp_register_script('myplugins', get_template_directory_uri() . '/js/myplugins.js', array('modernizr','jquery'), true, true);
    
    // Scripts
-   wp_register_script('myscripts', get_template_directory_uri() . '/js/myscripts.js', array('jquery', 'foundation', 'plugins'), true, true);
+   wp_register_script('myscripts', get_template_directory_uri() . '/js/myscripts.js', array('modernizr', 'jquery', 'foundation', 'plugins'), true, true);
    
    // Enqueue the scripts
+   wp_enqueue_script('modernizr');
    wp_enqueue_script('jquery');
    wp_enqueue_script('foundation');
    wp_enqueue_script('myplugins');
