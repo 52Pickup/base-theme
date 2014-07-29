@@ -1,0 +1,35 @@
+/*   
+Theme Name: Foundation Starter WP Theme
+Theme URI: -
+Description: This is just a Foundation Starter WordPress Theme template -- WordPress v3.9.1
+Author: Jason Ellis
+Author URI: http://jasonellis.ca
+Version: 1.0
+*/
+
+@import "css/foundation.css";
+@import "css/normalize.css";
+
+@function remCalc($pxWidth) {
+  // ex. $pxWidth = 10
+  @return $pxWidth / 16 * 1rem;
+}
+
+/*******************************************
+ * BEGIN GLOBAL STYLES
+ *******************************************/
+
+html{
+	-webkit-font-smoothing: antialiased;
+	font-size: 62.5%;// Set the root element size
+}
+
+body{
+}
+
+h1, h2, h3, h4, h5, h6{
+}
+
+/*******************************************
+ * END GLOBAL STYLES
+ *******************************************/
