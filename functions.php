@@ -1,6 +1,6 @@
 <?php
 
-$theme_text_domain = 'foundation-starter';
+define('THEME_TEXTDOMAIN', 'foundation-starter');
 
 /*************************************************************************************
 *  Register Menus
@@ -8,9 +8,9 @@ $theme_text_domain = 'foundation-starter';
 
 /*if ( function_exists( 'register_nav_menus' ) ) {
    register_nav_menus( array(
-      'header-nav' => __( 'Header Navigation', $theme_text_domain ),
-      'main-nav' => __( 'Main Navigation', $theme_text_domain ),
-      'footer-nav' => __( 'Footer Navigation', $theme_text_domain )
+      'header-nav' => __( 'Header Navigation', THEME_TEXTDOMAIN ),
+      'main-nav' => __( 'Main Navigation', THEME_TEXTDOMAIN ),
+      'footer-nav' => __( 'Footer Navigation', THEME_TEXTDOMAIN )
    ) );
 }*/
 
@@ -23,18 +23,18 @@ $theme_text_domain = 'foundation-starter';
 
    function hw_widgets_init() {
       register_sidebar( array(
-         'name' => __( 'Header Sidebar', $theme_text_domain ),
+         'name' => __( 'Header Sidebar', THEME_TEXTDOMAIN ),
          'id' => 'header-sidebar',
-         'description' => __( 'Header Sidebar', $theme_text_domain ),
+         'description' => __( 'Header Sidebar', THEME_TEXTDOMAIN ),
          'before_widget' => '',
          'after_widget' => '',
          'before_title' => '',
          'after_title' => '',
       ) );
       register_sidebar( array(
-         'name' => __( 'Main Sidebar', $theme_text_domain ),
+         'name' => __( 'Main Sidebar', THEME_TEXTDOMAIN ),
          'id' => 'main-sidebar',
-         'description' => __( 'Main Sidebar', $theme_text_domain ),
+         'description' => __( 'Main Sidebar', THEME_TEXTDOMAIN ),
          'before_widget' => '',
          'after_widget' => '',
          'before_title' => '',

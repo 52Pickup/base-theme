@@ -1,22 +1,38 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" <?php language_attributes(); ?>>
-<head profile="http://gmpg.org/xfn/11">	
-	<meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />	
-	<?php if (is_search()) { ?>
-	   <meta name="robots" content="noindex, nofollow" /> 
-	<?php } ?>
-	<title><?php wp_title(''); ?></title>
-	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-	<link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>" type="text/css" />
-	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
-	<?php if ( is_singular() ) wp_enqueue_script( 'comment-reply' ); ?>
-    <!-- Don't forget analytics -->
-	<?php wp_head(); ?>	
+<!DOCTYPE html>
+<!--[if IE 8]> <html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" <?php language_attributes(); ?> > <!--<![endif]-->
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <!-- <link rel="shortcut icon" href="" type="image/png"> -->
+  <title>
+		<?php
+			/*
+			 * Print the <title> tag based on what is being viewed.
+			 */
+			global $page, $paged;
+			
+			wp_title( '|', true, 'right' );
+		
+			// Add the blog name.
+			bloginfo( 'name' );
+		
+			// Add the blog description for the home/front page.
+			$site_description = get_bloginfo( 'description', 'display' );
+			if ( $site_description && ( is_home() || is_front_page() ) )
+				echo " | $site_description";
+		
+			// Add a page number if necessary:
+			if ( $paged >= 2 || $page >= 2 )
+				echo ' | ' . sprintf( __( 'Page %s', THEME_TEXTDOMAIN ), max( $paged, $page ) );
+		?>
+  </title>
+  
+  <!-- Google Analytics here -->
+
+  <?php wp_head(); ?>
+
 </head>
 
 <body <?php body_class(); ?>>
-	<div id="header">
-		<div class="logo"><a title="Home" href="<?php bloginfo('url'); ?>"><?php bloginfo('name'); ?></a></div>
-		<div class="description"><?php bloginfo('description'); ?></div>
-	</div><!-- End #header -->
 
