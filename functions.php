@@ -6,35 +6,35 @@ define('THEME_TEXTDOMAIN', 'foundation-starter');
 *  Register Menus
 **************************************************************************************/
 
-/*if ( function_exists( 'register_nav_menus' ) ) {
+if ( function_exists( 'register_nav_menus' ) ) {
    register_nav_menus( array(
       'header-nav' => __( 'Header Navigation', THEME_TEXTDOMAIN ),
       'main-nav' => __( 'Main Navigation', THEME_TEXTDOMAIN ),
       'footer-nav' => __( 'Footer Navigation', THEME_TEXTDOMAIN )
    ) );
-}*/
+}
 
 
 /*************************************************************************************
 *  Register Sidebars
 *************************************************************************************/
 
-/*if ( function_exists('register_sidebar') ) {
+if ( function_exists('register_sidebar') ) {
 
    function hw_widgets_init() {
       register_sidebar( array(
-         'name' => __( 'Header Sidebar', THEME_TEXTDOMAIN ),
-         'id' => 'header-sidebar',
-         'description' => __( 'Header Sidebar', THEME_TEXTDOMAIN ),
+         'name' => __( 'Main Sidebar', THEME_TEXTDOMAIN ),
+         'id' => 'main-sidebar',
+         'description' => __( 'Main Sidebar', THEME_TEXTDOMAIN ),
          'before_widget' => '',
          'after_widget' => '',
          'before_title' => '',
          'after_title' => '',
       ) );
       register_sidebar( array(
-         'name' => __( 'Main Sidebar', THEME_TEXTDOMAIN ),
-         'id' => 'main-sidebar',
-         'description' => __( 'Main Sidebar', THEME_TEXTDOMAIN ),
+         'name' => __( 'Blog Sidebar', THEME_TEXTDOMAIN ),
+         'id' => 'blog-sidebar',
+         'description' => __( 'Blog Sidebar', THEME_TEXTDOMAIN ),
          'before_widget' => '',
          'after_widget' => '',
          'before_title' => '',
@@ -45,7 +45,7 @@ define('THEME_TEXTDOMAIN', 'foundation-starter');
 
    add_action( 'widgets_init', 'hw_widgets_init' );
 
-}*/
+}
 
 	
 /*************************************************************************************
@@ -131,5 +131,44 @@ add_action('init', 'head_cleanup');
 * Theme Setup
 *************************************************************************************/
 
-add_theme_support( 'post-thumbnails' );  // Support for Featured Images
+// Add support for featured images
+add_theme_support( 'post-thumbnails' );
+
+// Set the default attachments 'link to' option to 'None'
+function my_attachments_options() {
+    update_option('image_default_link_type', 'none' );
+}
+add_action('after_setup_theme', 'my_attachments_options');
+
+// Excerpt Read more link
+function new_excerpt_more($more) {
+    global $post;
+    return '... <a class="read_more" title="' . get_the_title($post->ID) . '" href="'. get_permalink($post->ID) . '">Read more</a>';
+}
+add_filter('excerpt_more', 'new_excerpt_more');
+
+/*************************************************************************************
+* Custom login logo, url & title
+*************************************************************************************/
+function my_login_logo() { ?>
+    <style type="text/css">
+        body.login div#login h1 a {
+            background-image: url(<?php echo get_template_directory_uri(); ?>/img/logo.png);
+            width: 200px;
+            height: 133px;
+            background-size: 200px 133px;
+        }
+    </style>
+<?php }
+add_action( 'login_enqueue_scripts', 'my_login_logo' );
+
+function my_login_logo_url() {
+    return home_url();
+}
+add_filter( 'login_headerurl', 'my_login_logo_url' );
+
+function my_login_logo_url_title() {
+    return get_bloginfo( 'name' );
+}
+add_filter( 'login_headertitle', 'my_login_logo_url_title' );
 

@@ -4,7 +4,7 @@
 
 	<?php if ( have_posts() ) : ?>
 
-		<h1><?php the_title(); ?></h1>
+		<h1>Results for "<?php the_search_query(); ?>"</h1>
 		
 		<?php while ( have_posts() ) : the_post(); ?>
 						

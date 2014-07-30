@@ -24,7 +24,6 @@
     	<ul>
     		<?php wp_register(); ?>
     		<li><?php wp_loginout(); ?></li>
-    		<li><a href="http://wordpress.org/" title="Powered by WordPress, state-of-the-art semantic personal publishing platform.">WordPress</a></li>
     		<?php wp_meta(); ?>
     	</ul>
     	
