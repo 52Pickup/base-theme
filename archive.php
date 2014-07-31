@@ -19,13 +19,13 @@
 			<h1>Archive for <?php the_time('F, Y'); ?></h1>
 
 		<?php /* If this is a yearly archive */ } elseif (is_year()) { ?>
-			<h1 class="pagetitle">Archive for <?php the_time('Y'); ?></h1>
+			<h1>Archive for <?php the_time('Y'); ?></h1>
 
 		<?php /* If this is an author archive */ } elseif (is_author()) { ?>
-			<h1 class="pagetitle">Author Archive</h1>
+			<h1>Author Archive</h1>
 
 		<?php /* If this is a paged archive */ } elseif (isset($_GET['paged']) && !empty($_GET['paged'])) { ?>
-			<h1 class="pagetitle">Blog Archives</h1>	
+			<h1>Blog Archives</h1>	
 		<?php } ?>
 		
 		<?php while ( have_posts() ) : the_post(); ?>

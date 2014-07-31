@@ -1,5 +1,6 @@
 <?php
 
+// Define your theme text domain
 define('THEME_TEXTDOMAIN', 'foundation-starter');
 
 /*************************************************************************************
@@ -8,12 +9,10 @@ define('THEME_TEXTDOMAIN', 'foundation-starter');
 
 if ( function_exists( 'register_nav_menus' ) ) {
    register_nav_menus( array(
-      'header-nav' => __( 'Header Navigation', THEME_TEXTDOMAIN ),
       'main-nav' => __( 'Main Navigation', THEME_TEXTDOMAIN ),
       'footer-nav' => __( 'Footer Navigation', THEME_TEXTDOMAIN )
    ) );
 }
-
 
 /*************************************************************************************
 *  Register Sidebars
@@ -21,32 +20,31 @@ if ( function_exists( 'register_nav_menus' ) ) {
 
 if ( function_exists('register_sidebar') ) {
 
-   function hw_widgets_init() {
+   function my_widgets_init() {
       register_sidebar( array(
          'name' => __( 'Main Sidebar', THEME_TEXTDOMAIN ),
          'id' => 'main-sidebar',
-         'description' => __( 'Main Sidebar', THEME_TEXTDOMAIN ),
-         'before_widget' => '',
-         'after_widget' => '',
-         'before_title' => '',
-         'after_title' => '',
+         'description' => __( 'This is the main sidebar.', THEME_TEXTDOMAIN ),
+         'before_widget' => '<div id="%1$s" class="widget %2$s">',
+         'after_widget' => '</div>',
+         'before_title' => '<h3>',
+         'after_title' => '</h3>',
       ) );
       register_sidebar( array(
          'name' => __( 'Blog Sidebar', THEME_TEXTDOMAIN ),
          'id' => 'blog-sidebar',
-         'description' => __( 'Blog Sidebar', THEME_TEXTDOMAIN ),
-         'before_widget' => '',
-         'after_widget' => '',
-         'before_title' => '',
-         'after_title' => '',
+         'description' => __( 'This is the blog sidebar.', THEME_TEXTDOMAIN ),
+         'before_widget' => '<div id="%1$s" class="widget %2$s">',
+         'after_widget' => '</div>',
+         'before_title' => '<h3>',
+         'after_title' => '</h3>',
       ) );
 
    }
 
-   add_action( 'widgets_init', 'hw_widgets_init' );
+   add_action( 'widgets_init', 'my_widgets_init' );
 
 }
-
 	
 /*************************************************************************************
  *
@@ -105,7 +103,7 @@ add_action( 'wp_enqueue_scripts', 'load_styles', 2 );
  * Function: head_cleanup
  * 
  * Purpose: Make WordPress a little more secure and a lot cleaner by removing a few 
- *       links in the <head>
+ *          links in the <head>
  * 
  ************************************************************************************/
 
@@ -150,7 +148,7 @@ add_filter('excerpt_more', 'new_excerpt_more');
 /*************************************************************************************
 * Custom login logo, url & title
 *************************************************************************************/
-function my_login_logo() { ?>
+/*function my_login_logo() { ?>
     <style type="text/css">
         body.login div#login h1 a {
             background-image: url(<?php echo get_template_directory_uri(); ?>/img/logo.png);
@@ -170,5 +168,5 @@ add_filter( 'login_headerurl', 'my_login_logo_url' );
 function my_login_logo_url_title() {
     return get_bloginfo( 'name' );
 }
-add_filter( 'login_headertitle', 'my_login_logo_url_title' );
+add_filter( 'login_headertitle', 'my_login_logo_url_title' );*/
 

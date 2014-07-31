@@ -7,7 +7,7 @@
  */
 ?>
 		
-<div id="page-<?php the_ID(); ?>"  class="row">
+<div class="row">
 	
 	<div class="column large-12">
 			
