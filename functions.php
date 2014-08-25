@@ -56,26 +56,36 @@ if ( function_exists('register_sidebar') ) {
 
 function load_scripts(){
 
-   // Deregister the scripts
-   wp_deregister_script('jquery');
+  // Deregister the scripts
+  wp_deregister_script('jquery');
 
-   // Register Libraries & Helpers
-   wp_register_script('modernizr', get_template_directory_uri() . '/js/vendor/modernizr.js');
-   wp_register_script('jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js');
-   wp_register_script('foundation', get_template_directory_uri() . '/js/foundation.min.js', array('modernizr','jquery'), true, true);
+  // Register Libraries & Helpers
+  wp_register_script('modernizr', get_template_directory_uri() . '/js/vendor/modernizr.js');
+  wp_register_script('jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js');
+  wp_register_script('foundation', get_template_directory_uri() . '/js/foundation.min.js', array('modernizr','jquery'), true, true);
       
-   // Plugins
-   wp_register_script('myplugins', get_template_directory_uri() . '/js/myplugins.js', array('modernizr','jquery'), true, true);
+  // Plugins
+  wp_register_script('myplugins', get_template_directory_uri() . '/js/myplugins.js', array('modernizr','jquery'), true, true);
    
-   // Scripts
-   wp_register_script('myscripts', get_template_directory_uri() . '/js/myscripts.js', array('modernizr', 'jquery', 'foundation', 'myplugins'), true, true);
+  // Scripts
+  wp_register_script('myscripts', get_template_directory_uri() . '/js/myscripts.js', array('modernizr', 'jquery', 'foundation', 'myplugins'), true, true);
+  // IE 8 Scripts
+  //wp_register_script('myscripts_ie', get_template_directory_uri() . '/js/myscripts-ie.js', array('modernizr', 'jquery', 'foundation', 'myplugins'), true, true);
    
-   // Enqueue the scripts
-   wp_enqueue_script('modernizr');
-   wp_enqueue_script('jquery');
-   wp_enqueue_script('foundation');
-   wp_enqueue_script('myplugins');
-   wp_enqueue_script('myscripts');
+  // Enqueue the scripts
+  wp_enqueue_script('modernizr');
+  wp_enqueue_script('jquery');
+  wp_enqueue_script('foundation');
+  wp_enqueue_script('myplugins');
+  wp_enqueue_script('myscripts');
+
+  // If IE Support is required - especially for substituting CSS animations
+  /*if(preg_match('/(?i)msie [1-9]/',$_SERVER['HTTP_USER_AGENT'])){
+    wp_enqueue_script('myscripts_ie');
+  }
+  else{
+    wp_enqueue_script('myscripts');
+  }*/
 
 }  
 
