@@ -40,3 +40,20 @@
 
 <body <?php body_class(); ?>>
 
+<!-- Mobile only -->
+<nav class="mobile-nav-menu">
+	<a class="mobile-logo" href="<?php echo home_url(); ?>"><img src="" alt="<?php bloginfo('name'); ?> logo"></a>
+	<a class="mobile-menu-btn" href="#"><span></span>Menu</a>
+	<div class="mobile-menu-container">
+	<?php
+		wp_nav_menu(array(
+			'container' => false, // remove nav container
+			'container_class' => 'left', // class of container
+			'theme_location' => 'main-nav', // menu name
+			'depth' => 2, // limit the depth of the nav
+			'fallback_cb' => false, // fallback function (see below)
+		));
+	?>
+	</div>
+</nav>
+

@@ -2,6 +2,7 @@
 
 // Define your theme text domain
 define('THEME_TEXTDOMAIN', 'foundation-starter');
+define('THEME_URL', get_template_directory_uri());
 
 /*************************************************************************************
 *  Register Menus

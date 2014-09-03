@@ -1,0 +1,52 @@
+@mixin cssBorderRadius($size) {
+	-moz-border-radius: $size;
+	-webkit-border-radius: $size;
+	border-radius: $size;
+}
+
+@mixin cssBoxShadow($ydistance, $xdistance, $blur, $opacity){
+	-webkit-box-shadow: $ydistance $xdistance $blur rgba(0, 0, 0, $opacity);
+	-moz-box-shadow: $ydistance $xdistance $blur rgba(0, 0, 0, $opacity);
+	box-shadow: $ydistance $xdistance $blur rgba(0, 0, 0, $opacity);
+}
+
+@mixin transitionAll($duration, $ease){
+	-webkit-transition: all $duration $ease;
+	-moz-transition: all $duration $ease;
+	-ms-transition: all $duration $ease;
+	-o-transition: all $duration $ease;
+	transition: all $duration $ease;
+}
+
+@mixin transitionType($type, $duration, $ease){
+	-webkit-transition: $type $duration $ease;
+  	-moz-transition: $type $duration $ease;
+  	-ms-transition: $type $duration $ease;
+  	-o-transition: $type $duration $ease;
+  	transition: $type $duration $ease;
+}
+
+@mixin cssGradientWithMid($start, $mid, $stop){
+	background: $start; /* Old browsers */
+	background: -moz-linear-gradient(top,  $start 0%, $mid 50%, $stop 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$start), color-stop(50%,$mid), color-stop(100%,$stop)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  $start 0%,$mid 50%,$stop 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  $start 0%,$mid 50%,$stop 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  $start 0%,$mid 50%,$stop 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  $start 0%,$mid 50%,$stop 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$start', endColorstr='$stop',GradientType=0 ); /* IE6-9 */
+}
+
+@mixin cssRotate($deg){
+	-ms-transform: rotate($deg); /* IE 9 */
+    -webkit-transform: rotate($deg); /* Chrome, Safari, Opera */
+    transform: rotate($deg);
+}
+
+@mixin cubicBezier($duration){
+	-webkit-transition: all $duration cubic-bezier(0.585,-.6,.43,1.65);
+	-moz-transition: all $duration cubic-bezier(0.585,-.6,.43,1.65);
+	-ms-transition: all $duration cubic-bezier(0.585,-.6,.43,1.65);
+	-o-transition: all $duration cubic-bezier(0.585,-.6,.43,1.65);
+	transition: all $duration cubic-bezier(0.585,-.6,.43,1.65);
+}

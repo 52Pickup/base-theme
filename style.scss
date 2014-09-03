@@ -4,7 +4,7 @@ Theme URI: https://github.com/jayllellis/foundation-wp-starter
 Description: This is just a Foundation Starter WordPress Theme template -- WordPress v3.9.1
 Author: Jason Ellis
 Author URI: http://jasonellis.ca
-Version: 1.0.0
+Version: 1.0.1
 */
 
 @import "css/foundation.css";
@@ -15,30 +15,17 @@ Version: 1.0.0
   @return $pxWidth / 16 * 1rem;
 }
 
-// Mixins
-@mixin cssBorderRadius($size) {
-	-moz-border-radius: $size;
-	-webkit-border-radius: $size;
-	border-radius: $size;
-}
+@import "scss/mixins.scss";
 
-@mixin cssBoxShadow($ydistance, $xdistance, $blur, $opacity){
-	-webkit-box-shadow: $ydistance $xdistance $blur rgba(0, 0, 0, $opacity);
-	-moz-box-shadow: $ydistance $xdistance $blur rgba(0, 0, 0, $opacity);
-	box-shadow: $ydistance $xdistance $blur rgba(0, 0, 0, $opacity);
-}
-
-@mixin transitionAll($duration, $ease){
-	-webkit-transition: all $duration $ease;
-	-moz-transition: all $duration $ease;
-	-ms-transition: all $duration $ease;
-	-o-transition: all $duration $ease;
-	transition: all $duration $ease;
-}
+// Variables
+$body-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+$body-font-color: #3e3e3e;
+$white: #fff;
+$black: #000;
 
 /*******************************************
- * BEGIN GLOBAL STYLES
- *******************************************/
+* BEGIN GLOBAL STYLES
+*******************************************/
 
 html{ -webkit-font-smoothing: antialiased; }
 
@@ -54,10 +41,141 @@ a:active{}
 a:visited{}
 
 /*******************************************
- * END GLOBAL STYLES
- *******************************************/
+* END GLOBAL STYLES
+*******************************************/
 
 /*******************************************
- * MEDIA QUERIES
- *******************************************/
- @import "css/media-queries.scss";
+* BEGIN MOBILE MENU
+*******************************************/
+ 
+.mobile-nav-menu{
+	width: 100%;
+	height: 60px;
+	background: #fff;
+	-webkit-box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow:    0px 2px 3px 0px rgba(0, 0, 0, 0.1);
+    box-shadow:         0px 2px 3px 0px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1003;
+    display: none;
+    .mobile-logo{
+    	float: left;
+    	padding: 10px 0;
+    	margin-left: 15px;
+    	img{
+    		width: auto;
+    		height: 40px;
+    	}
+    }
+    .mobile-menu-btn{
+    	display: block;
+    	float: right;
+    	line-height: 1;
+    	font-size: remCalc(15);
+		color: #707070;
+		text-transform: uppercase;
+		font-family: $body-font-family;
+		font-weight: 300;
+		height: 60px;
+		padding: 24px 0;
+		margin-right: 15px;
+    	span {
+			width:15px;
+			height:2px;
+			background: $body-font-color; 
+			//@include cssBorderRadius(3px);
+			float: left;
+			@include cubicBezier(0.3s);
+			margin-top: 1px;
+			margin-right: 5px;
+		}
+ 
+		span:before {
+			content: "";
+			width: 15px;
+			height: 2px;
+			background: $body-font-color; 
+			@include cssBorderRadius(3px);
+			float: left;
+			margin-top: 4px;
+			display: block;
+			@include cubicBezier(0.3s);
+			margin-right: 5px;
+		}
+ 
+		span:after {
+			content: "";
+			width: 15px;
+			height: 2px;
+			background: $body-font-color; 
+			float: left;
+			@include cssBorderRadius(3px);
+			margin-top: 2px;
+			display: block;
+			@include cubicBezier(0.3s);
+			margin-right: 5px;
+		}
+ 
+		span.active {
+			@include cssRotate(45deg);
+			margin-top: 4px;
+		}
+ 
+		span.active:before {
+			@include cssRotate(-90deg);
+			margin-top: 0px;
+		}
+ 
+		span.active:after {
+			@include cssRotate(-90deg);
+			margin-top: -2px;
+		}
+    }
+	.mobile-menu-container{
+		display: none;
+		position: fixed;
+		top: 60px;
+		left: 0;
+		background: #fff;
+		width: 100%;
+		z-index: 1003;
+		-webkit-box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.1);
+    	-moz-box-shadow:    0px 2px 3px 0px rgba(0, 0, 0, 0.1);
+    	box-shadow:         0px 2px 3px 0px rgba(0, 0, 0, 0.1);
+		&.active{
+			display: block;
+		}
+		ul{
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			li{
+				a{
+					display: block;
+					width: 100%;
+					font-family: $body-font-family;
+					font-weight: 300;
+					font-size: remCalc(15);
+					line-height: 1.5;
+					padding: 5px 0;
+					text-transform: uppercase;
+					text-align: center;
+					color: #707070;
+					&:hover{
+						background: #f1f1f1;
+					}
+				}
+			}
+		}
+		> ul{
+			padding: 20px 0;
+		}
+	}
+}
+ 
+/*******************************************
+* END MOBILE MENU
+*******************************************/
+
+@import "scss/animations.scss";
+@import "scss/media-queries.scss";
