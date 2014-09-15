@@ -61,17 +61,17 @@ function load_scripts(){
   wp_deregister_script('jquery');
 
   // Register Libraries & Helpers
-  wp_register_script('modernizr', get_template_directory_uri() . '/js/vendor/modernizr.js');
+  wp_register_script('modernizr', THEME_URL . '/js/vendor/modernizr.js');
   wp_register_script('jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js');
-  wp_register_script('foundation', get_template_directory_uri() . '/js/foundation.min.js', array('modernizr','jquery'), true, true);
+  wp_register_script('foundation', THEME_URL . '/js/foundation.min.js', array('modernizr','jquery'), true, true);
       
   // Plugins
-  wp_register_script('myplugins', get_template_directory_uri() . '/js/myplugins.js', array('modernizr','jquery'), true, true);
+  wp_register_script('myplugins', THEME_URL . '/js/myplugins.js', array('modernizr','jquery'), true, true);
    
   // Scripts
-  wp_register_script('myscripts', get_template_directory_uri() . '/js/myscripts.js', array('modernizr', 'jquery', 'foundation', 'myplugins'), true, true);
+  wp_register_script('myscripts', THEME_URL . '/js/myscripts.js', array('modernizr', 'jquery', 'foundation', 'myplugins'), true, true);
   // IE 8 Scripts
-  //wp_register_script('myscripts_ie', get_template_directory_uri() . '/js/myscripts-ie.js', array('modernizr', 'jquery', 'foundation', 'myplugins'), true, true);
+  //wp_register_script('myscripts_ie', THEME_URL . '/js/myscripts-ie.js', array('modernizr', 'jquery', 'foundation', 'myplugins'), true, true);
    
   // Enqueue the scripts
   wp_enqueue_script('modernizr');
@@ -100,14 +100,14 @@ add_action( 'wp_enqueue_scripts', 'load_scripts' );
  * 
  ************************************************************************************/
 
-function load_styles() {
+function load_custom_styles() {
    
    // Load stylesheets
-   wp_enqueue_style('style', get_template_directory_uri().'/style.css');// default styles
+   wp_enqueue_style('style', THEME_URL.'/style.css');// default styles
    
 }
 
-add_action( 'wp_enqueue_scripts', 'load_styles', 2 );
+add_action( 'wp_enqueue_scripts', 'load_custom_styles', 2 );
 
 /*************************************************************************************
  *
@@ -149,6 +149,10 @@ function my_attachments_options() {
 }
 add_action('after_setup_theme', 'my_attachments_options');
 
+if ( ! isset( $content_width ) ) {
+  $content_width = 1000;
+}
+
 // Excerpt Read more link
 function new_excerpt_more($more) {
     global $post;
@@ -162,7 +166,7 @@ add_filter('excerpt_more', 'new_excerpt_more');
 /*function my_login_logo() { ?>
     <style type="text/css">
         body.login div#login h1 a {
-            background-image: url(<?php echo get_template_directory_uri(); ?>/img/logo.png);
+            background-image: url(<?php echo THEME_URL; ?>/img/logo.png);
             width: 200px;
             height: 133px;
             background-size: 200px 133px;

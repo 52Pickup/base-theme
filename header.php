@@ -33,7 +33,7 @@
   <?php wp_head(); ?>
 
   <!--[if lte IE 9]>
-	<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/ie.css">
+	<link rel="stylesheet" href="<?php echo THEME_URL; ?>/css/ie.css">
   <![endif]-->
 
 </head>

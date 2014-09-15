@@ -26,6 +26,17 @@
   	transition: $type $duration $ease;
 }
 
+@mixin cssGradient($start, $stop){
+	background: $start; /* Old browsers */
+	background: -moz-linear-gradient(top,  $start 0%, $stop 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$start), color-stop(100%,$stop)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  $start 0%,$stop 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  $start 0%,$stop 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  $start 0%,$stop 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  $start 0%,$stop 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$start', endColorstr='$stop',GradientType=0 ); /* IE6-9 */
+}
+
 @mixin cssGradientWithMid($start, $mid, $stop){
 	background: $start; /* Old browsers */
 	background: -moz-linear-gradient(top,  $start 0%, $mid 50%, $stop 100%); /* FF3.6+ */
@@ -49,4 +60,11 @@
 	-ms-transition: all $duration cubic-bezier(0.585,-.6,.43,1.65);
 	-o-transition: all $duration cubic-bezier(0.585,-.6,.43,1.65);
 	transition: all $duration cubic-bezier(0.585,-.6,.43,1.65);
+}
+
+@mixin fontFace($fontFamily: myFont, $eotFileSrc: 'myFont.eot', $woffFileSrc: 'myFont.woff', $ttfFileSrc: 'myFont.ttf') {
+  font-family: $fontFamily;
+  src: url($eotFileSrc)  format('eot'),
+       url($woffFileSrc) format('woff'),
+       url($ttfFileSrc)  format('truetype');
 }

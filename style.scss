@@ -1,32 +1,65 @@
 /*   
 Theme Name: Foundation 5 Starter WP Theme
 Theme URI: https://github.com/jayllellis/foundation-wp-starter
-Description: This is just a Foundation Starter WordPress Theme template -- WordPress v3.9.1
+Description: This is just a Foundation Starter WordPress Theme template
 Author: Jason Ellis
 Author URI: http://jasonellis.ca
-Version: 1.0.1
+Version: 2.0.0
 */
 
-@import "css/foundation.css";
-@import "css/normalize.css";
-
+// FUNCTIONS
 @function remCalc($pxWidth) {
-  // ex. $pxWidth = 10
   @return $pxWidth / 16 * 1rem;
 }
 
-@import "scss/mixins.scss";
+@function calc-percent($target, $container) {
+  @return ($target / $container) * 100%;
+}
 
-// Variables
-$body-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-$body-font-color: #3e3e3e;
+// VARIABLES
+$primary-colour: #2ba6cb; // Foundation colours
+$secondary-colour: #e9e9e9; // Foundation colours
+$alert-colour: #c60f13; // Foundation colours
+$success-colour: #5da423; // Foundation colours
+$header-font-colour: #222; // Foundation colours
+$body-font-colour: #3e3e3e; // Foundation colours
 $white: #fff;
 $black: #000;
+$body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 
-/*******************************************
-* BEGIN GLOBAL STYLES
-*******************************************/
+// MIXINS
+@import "scss/mixins";
 
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+1.0 Foundation
+	1.1 CSS Reset
+	1.2 Foundation Default
+2.0 Global Styles
+	2.1 WordPress Core
+	2.2 Top Bar
+3.0 Header
+-.- Animations
+-.- Media Queries
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+1.0 FOUNDATION
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+1.1 CSS RESET
+--------------------------------------------------------------*/
+@import "scss/normalize";
+
+/*--------------------------------------------------------------
+1.2 FOUNDATION DEFAULT
+--------------------------------------------------------------*/
+@import "scss/foundation";
+
+/*--------------------------------------------------------------
+2.0 GLOBAL STYLES
+--------------------------------------------------------------*/
 html{ -webkit-font-smoothing: antialiased; }
 
 body{
@@ -40,14 +73,14 @@ a:hover{}
 a:active{}
 a:visited{}
 
-/*******************************************
-* END GLOBAL STYLES
-*******************************************/
+/*--------------------------------------------------------------
+2.1 WORDPRESS CORE
+--------------------------------------------------------------*/
+@import "scss/wp-core";
 
-/*******************************************
-* BEGIN MOBILE MENU
-*******************************************/
- 
+/*--------------------------------------------------------------
+2.2 TOP BAR
+--------------------------------------------------------------*/
 .mobile-nav-menu{
 	width: 100%;
 	height: 60px;
@@ -55,9 +88,12 @@ a:visited{}
 	-webkit-box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.1);
     -moz-box-shadow:    0px 2px 3px 0px rgba(0, 0, 0, 0.1);
     box-shadow:         0px 2px 3px 0px rgba(0, 0, 0, 0.1);
-    position: relative;
+    position: fixed;
+    top: 0;
+    left: 0;
     z-index: 1003;
     display: none;
+    border-top: 5px solid $body-font-colour;
     .mobile-logo{
     	float: left;
     	padding: 10px 0;
@@ -82,7 +118,7 @@ a:visited{}
     	span {
 			width:15px;
 			height:2px;
-			background: $body-font-color; 
+			background: $body-font-colour; 
 			//@include cssBorderRadius(3px);
 			float: left;
 			@include cubicBezier(0.3s);
@@ -94,7 +130,7 @@ a:visited{}
 			content: "";
 			width: 15px;
 			height: 2px;
-			background: $body-font-color; 
+			background: $body-font-colour; 
 			@include cssBorderRadius(3px);
 			float: left;
 			margin-top: 4px;
@@ -107,7 +143,7 @@ a:visited{}
 			content: "";
 			width: 15px;
 			height: 2px;
-			background: $body-font-color; 
+			background: $body-font-colour; 
 			float: left;
 			@include cssBorderRadius(3px);
 			margin-top: 2px;
@@ -172,10 +208,17 @@ a:visited{}
 		}
 	}
 }
- 
-/*******************************************
-* END MOBILE MENU
-*******************************************/
 
-@import "scss/animations.scss";
-@import "scss/media-queries.scss";
+/*--------------------------------------------------------------
+3.0 HEADER
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+ANIMATIONS
+--------------------------------------------------------------*/
+@import "scss/animations";
+
+/*--------------------------------------------------------------
+MEDIA QUERIES
+--------------------------------------------------------------*/
+@import "scss/media-queries";
