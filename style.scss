@@ -1,4 +1,4 @@
-/*   
+/*
 Theme Name: Foundation 5 Starter WP Theme
 Theme URI: https://github.com/jayllellis/foundation-wp-starter
 Description: This is just a Foundation Starter WordPress Theme template
@@ -8,11 +8,16 @@ Version: 2.0.0
 */
 
 // FUNCTIONS
-@function remCalc($pxWidth) {
-  @return $pxWidth / 16 * 1rem;
+// @function remCalc($pxWidth) {
+  // @return $pxWidth / 16 * 1rem;
+// }
+
+@function remCalc($pxSize) {
+  $remSize: $pxSize / ($pxSize * 0 + 1);
+  @return $remSize / 16 * 1rem;
 }
 
-@function calc-percent($target, $container) {
+@function percentCalc($target, $container) {
   @return ($target / $container) * 100%;
 }
 
@@ -39,9 +44,10 @@ $body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 2.0 Global Styles
 	2.1 WordPress Core
 	2.2 Top Bar
-3.0 Header
--.- Animations
--.- Media Queries
+3.0 Homepage
+4.0 Subpages
+5.0 Animations
+6.0 Media Queries
 --------------------------------------------------------------*/
 
 /*--------------------------------------------------------------
@@ -60,18 +66,7 @@ $body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 /*--------------------------------------------------------------
 2.0 GLOBAL STYLES
 --------------------------------------------------------------*/
-html{ -webkit-font-smoothing: antialiased; }
-
-body{
-}
-
-h1, h2, h3, h4, h5, h6{
-}
-
-a{}
-a:hover{}
-a:active{}
-a:visited{}
+@import "scss/global";
 
 /*--------------------------------------------------------------
 2.1 WORDPRESS CORE
@@ -81,144 +76,24 @@ a:visited{}
 /*--------------------------------------------------------------
 2.2 TOP BAR
 --------------------------------------------------------------*/
-.mobile-nav-menu{
-	width: 100%;
-	height: 60px;
-	background: #fff;
-	-webkit-box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.1);
-    -moz-box-shadow:    0px 2px 3px 0px rgba(0, 0, 0, 0.1);
-    box-shadow:         0px 2px 3px 0px rgba(0, 0, 0, 0.1);
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1003;
-    display: none;
-    border-top: 5px solid $body-font-colour;
-    .mobile-logo{
-    	float: left;
-    	padding: 10px 0;
-    	margin-left: 15px;
-    	img{
-    		width: auto;
-    		height: 40px;
-    	}
-    }
-    .mobile-menu-btn{
-    	display: block;
-    	float: right;
-    	line-height: 1;
-    	font-size: remCalc(15);
-		color: #707070;
-		text-transform: uppercase;
-		font-family: $body-font-family;
-		font-weight: 300;
-		height: 60px;
-		padding: 24px 0;
-		margin-right: 15px;
-    	span {
-			width:15px;
-			height:2px;
-			background: $body-font-colour; 
-			//@include cssBorderRadius(3px);
-			float: left;
-			@include cubicBezier(0.3s);
-			margin-top: 1px;
-			margin-right: 5px;
-		}
- 
-		span:before {
-			content: "";
-			width: 15px;
-			height: 2px;
-			background: $body-font-colour; 
-			@include cssBorderRadius(3px);
-			float: left;
-			margin-top: 4px;
-			display: block;
-			@include cubicBezier(0.3s);
-			margin-right: 5px;
-		}
- 
-		span:after {
-			content: "";
-			width: 15px;
-			height: 2px;
-			background: $body-font-colour; 
-			float: left;
-			@include cssBorderRadius(3px);
-			margin-top: 2px;
-			display: block;
-			@include cubicBezier(0.3s);
-			margin-right: 5px;
-		}
- 
-		span.active {
-			@include cssRotate(45deg);
-			margin-top: 4px;
-		}
- 
-		span.active:before {
-			@include cssRotate(-90deg);
-			margin-top: 0px;
-		}
- 
-		span.active:after {
-			@include cssRotate(-90deg);
-			margin-top: -2px;
-		}
-    }
-	.mobile-menu-container{
-		display: none;
-		position: fixed;
-		top: 60px;
-		left: 0;
-		background: #fff;
-		width: 100%;
-		z-index: 1003;
-		-webkit-box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.1);
-    	-moz-box-shadow:    0px 2px 3px 0px rgba(0, 0, 0, 0.1);
-    	box-shadow:         0px 2px 3px 0px rgba(0, 0, 0, 0.1);
-		&.active{
-			display: block;
-		}
-		ul{
-			list-style: none;
-			margin: 0;
-			padding: 0;
-			li{
-				a{
-					display: block;
-					width: 100%;
-					font-family: $body-font-family;
-					font-weight: 300;
-					font-size: remCalc(15);
-					line-height: 1.5;
-					padding: 5px 0;
-					text-transform: uppercase;
-					text-align: center;
-					color: #707070;
-					&:hover{
-						background: #f1f1f1;
-					}
-				}
-			}
-		}
-		> ul{
-			padding: 20px 0;
-		}
-	}
-}
+@import "scss/top-bar";
 
 /*--------------------------------------------------------------
-3.0 HEADER
+3.0 HOMEPAGE
 --------------------------------------------------------------*/
+@import "scss/homepage";
 
 /*--------------------------------------------------------------
-ANIMATIONS
+4.0 SUBPAGES
+--------------------------------------------------------------*/
+@import "scss/subpages";
+
+/*--------------------------------------------------------------
+5.0 ANIMATIONS
 --------------------------------------------------------------*/
 @import "scss/animations";
 
 /*--------------------------------------------------------------
-MEDIA QUERIES
+6.0 MEDIA QUERIES
 --------------------------------------------------------------*/
 @import "scss/media-queries";

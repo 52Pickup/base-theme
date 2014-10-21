@@ -68,3 +68,12 @@
        url($woffFileSrc) format('woff'),
        url($ttfFileSrc)  format('truetype');
 }
+
+@mixin cssScale($size, $duration){
+	-moz-transform: scale($size);
+    -webkit-transform: scale($size);
+    transform: scale($size);
+    -moz-transition-duration: $duration;
+    -webkit-transition-duration: $duration;
+    transition-duration: $duration;
+}

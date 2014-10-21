@@ -1,4 +1,4 @@
-/*   
+/*
 Theme Name: Foundation 5 Starter WP Theme
 Theme URI: https://github.com/jayllellis/foundation-wp-starter
 Description: This is just a Foundation Starter WordPress Theme template
@@ -16,8 +16,10 @@ Version: 2.0.0
 	2.1 WordPress Core
 	2.2 Top Bar
 3.0 Header
--.- Animations
--.- Media Queries
+4.0 Homepage
+5.0 Subpages
+6.0 Animations
+7.0 Media Queries
 --------------------------------------------------------------*/
 /*--------------------------------------------------------------
 1.0 FOUNDATION
@@ -7937,7 +7939,13 @@ a img.aligncenter {
 3.0 HEADER
 --------------------------------------------------------------*/
 /*--------------------------------------------------------------
-ANIMATIONS
+4.0 HOMEPAGE
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+5.0 SUBPAGES
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+6.0 ANIMATIONS
 --------------------------------------------------------------*/
 @-webkit-keyframes fadeOutDown {
   0% {
@@ -8261,7 +8269,7 @@ ANIMATIONS
 }
 
 /*--------------------------------------------------------------
-MEDIA QUERIES
+7.0 MEDIA QUERIES
 --------------------------------------------------------------*/
 /** Tablet Landscape **/
 @media screen and (max-width: 1024px) {

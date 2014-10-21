@@ -1,0 +1,127 @@
+.mobile-nav-menu{
+	width: 100%;
+	height: 60px;
+	background: #fff;
+	-webkit-box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow:    0px 2px 3px 0px rgba(0, 0, 0, 0.1);
+    box-shadow:         0px 2px 3px 0px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1003;
+    display: none;
+    border-top: 5px solid $body-font-colour;
+    .mobile-logo{
+    	float: left;
+    	padding: 10px 0;
+    	margin-left: 15px;
+    	img{
+    		width: auto;
+    		height: 40px;
+    	}
+    }
+    .mobile-menu-btn{
+    	display: block;
+    	float: right;
+    	line-height: 1;
+    	font-size: remCalc(15px);
+		color: #707070;
+		text-transform: uppercase;
+		font-family: $body-font-family;
+		font-weight: 300;
+		height: 60px;
+		padding: 24px 0;
+		margin-right: 15px;
+    	span {
+			width:15px;
+			height:2px;
+			background: $body-font-colour; 
+			//@include cssBorderRadius(3px);
+			float: left;
+			@include cubicBezier(0.3s);
+			margin-top: 1px;
+			margin-right: 5px;
+		}
+ 
+		span:before {
+			content: "";
+			width: 15px;
+			height: 2px;
+			background: $body-font-colour; 
+			@include cssBorderRadius(3px);
+			float: left;
+			margin-top: 4px;
+			display: block;
+			@include cubicBezier(0.3s);
+			margin-right: 5px;
+		}
+ 
+		span:after {
+			content: "";
+			width: 15px;
+			height: 2px;
+			background: $body-font-colour; 
+			float: left;
+			@include cssBorderRadius(3px);
+			margin-top: 2px;
+			display: block;
+			@include cubicBezier(0.3s);
+			margin-right: 5px;
+		}
+ 
+		span.active {
+			@include cssRotate(45deg);
+			margin-top: 4px;
+		}
+ 
+		span.active:before {
+			@include cssRotate(-90deg);
+			margin-top: 0px;
+		}
+ 
+		span.active:after {
+			@include cssRotate(-90deg);
+			margin-top: -2px;
+		}
+    }
+	.mobile-menu-container{
+		display: none;
+		position: fixed;
+		top: 60px;
+		left: 0;
+		background: #fff;
+		width: 100%;
+		z-index: 1003;
+		-webkit-box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.1);
+    	-moz-box-shadow:    0px 2px 3px 0px rgba(0, 0, 0, 0.1);
+    	box-shadow:         0px 2px 3px 0px rgba(0, 0, 0, 0.1);
+		&.active{
+			display: block;
+		}
+		ul{
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			li{
+				a{
+					display: block;
+					width: 100%;
+					font-family: $body-font-family;
+					font-weight: 300;
+					font-size: remCalc(15px);
+					line-height: 1.5;
+					padding: 5px 0;
+					text-transform: uppercase;
+					text-align: center;
+					color: #707070;
+					&:hover{
+						background: #f1f1f1;
+					}
+				}
+			}
+		}
+		> ul{
+			padding: 20px 0;
+		}
+	}
+}
