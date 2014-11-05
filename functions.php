@@ -66,7 +66,8 @@ function load_scripts(){
   wp_register_script('foundation', THEME_URL . '/js/foundation.min.js', array('modernizr','jquery'), true, true);
       
   // Plugins
-  wp_register_script( 'bxslider', THEME_URL . '/js/vendor/jquery.bxslider/jquery.bxslider.min.js', 'jquery', true, true);
+  // Only call the fitvids script if videos will be used in sliders
+  // wp_register_script('fitvids', THEME_URL . '/js/vendor/jquery.bxslider/plugins/jquery.fitvids.js', 'jquery', true, true);
   wp_register_script('myplugins', THEME_URL . '/js/myplugins.js', array('modernizr','jquery'), true, true);
    
   // Scripts
@@ -78,7 +79,7 @@ function load_scripts(){
   wp_enqueue_script('modernizr');
   wp_enqueue_script('jquery');
   wp_enqueue_script('foundation');
-  wp_enqueue_script('bxslider');
+  // wp_enqueue_script('fitvids'); // Only call this script for use with videos in sliders
   wp_enqueue_script('myplugins');
   wp_enqueue_script('myscripts');
 
@@ -106,6 +107,7 @@ function load_custom_styles() {
    
    // Load stylesheets
    wp_enqueue_style('font_awesome', 'http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css');// Font Awesome
+   wp_enqueue_style('fancybox_styles', THEME_URL.'/js/vendor/fancybox/source/jquery.fancybox.css');// Fancybox CSS
    wp_enqueue_style('style', THEME_URL.'/style.css');// default styles
    
 }
