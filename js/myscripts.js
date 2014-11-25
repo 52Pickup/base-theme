@@ -81,6 +81,23 @@ jQuery.fn.isFullyVisible = function(){
      
 }
 
+/**
+  * @desc create equal height columns
+  * @param object - the elements to apply equal heights to
+  * @return none
+*/
+jQuery.fn.equalHeights = function(){
+  var colSelector = this.selector;// Get the selector of the object
+  var newHeight;
+  var colHeights = [];
+  $(colSelector).each(function(){
+    var singleCol = $(this).outerHeight();// Get the outerHeight of a single column
+    colHeights.push(singleCol);// Push the single height into the array
+    newHeight = Math.max.apply(Math,colHeights);// Get the tallest column from the array
+  });
+  colSelector.css('height', newHeight+'px');// Apply the tallest height to all columns
+}
+
 /*--------------------------------------------------------------
 DOCUMENT READY
 --------------------------------------------------------------*/
