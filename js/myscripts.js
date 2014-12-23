@@ -105,6 +105,12 @@ $(document).ready (function(){
 
 	addBrowserClass();
 
+  $('.mobile-menu-btn').click(function(){
+    $(this).find('span').toggleClass('active');
+    $(this).siblings('.mobile-menu-container').toggleClass('active');
+    return false;
+  });
+
 });
 
 /*--------------------------------------------------------------
