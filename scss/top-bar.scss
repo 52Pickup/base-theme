@@ -13,7 +13,7 @@
     border-top: 5px solid $body-font-colour;
     .mobile-logo{
     	float: left;
-    	padding: 10px 0;
+    	padding: 8px 0;
     	margin-left: 15px;
     	img{
     		width: auto;
@@ -30,7 +30,7 @@
 		font-family: $body-font-family;
 		font-weight: 300;
 		height: 60px;
-		padding: 24px 0;
+		padding: 20px 0;
 		margin-right: 15px;
     	span {
 			width:15px;
@@ -39,7 +39,7 @@
 			//@include cssBorderRadius(3px);
 			float: left;
 			@include cubicBezier(0.3s);
-			margin-top: 1px;
+			margin-top: 3px;
 			margin-right: 5px;
 		}
  
