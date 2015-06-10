@@ -110,7 +110,8 @@ $(document).ready (function(){
     $(this).siblings('.mobile-menu-container').toggleClass('active');
     return false;
   });
-
+  //fix for form focus bug on iphones
+  if("iPad"==navigator.platform||"iPhone"==navigator.platform||"iPod"==navigator.platform||"Linux armv6l"==navigator.platform){var $body=jQuery("body");$(document).on("focus","input",function(){$body.addClass("fixfixed")}).on("blur","input",function(){$body.removeClass("fixfixed")})}
 });
 
 /*--------------------------------------------------------------
