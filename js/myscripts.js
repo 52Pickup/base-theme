@@ -95,8 +95,7 @@ jQuery.fn.equalHeights = function(){
     colHeights.push(singleCol);// Push the single height into the array
     newHeight = Math.max.apply(Math,colHeights);// Get the tallest column from the array
   });
-  colSelector.css('height', newHeight+'px');// Apply the tallest height to all columns
-}
+  $(colSelector).css('height', newHeight+'px');// Apply the tallest height to all columns}
 
 /*--------------------------------------------------------------
 DOCUMENT READY
