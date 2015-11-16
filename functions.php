@@ -97,6 +97,23 @@ add_action( 'wp_enqueue_scripts', 'load_scripts' );
 
 /*************************************************************************************
  *
+ * Function: add_slug_body_class
+ * 
+ * Purpose: Add page name to body class to overcome different navigations
+ * 
+ ************************************************************************************/
+
+function add_slug_body_class( $classes ) {
+global $post;
+if ( isset( $post ) ) {
+$classes[] = $post->post_type . '-' . $post->post_name;
+}
+return $classes;
+}
+add_filter( 'body_class', 'add_slug_body_class' );
+
+/*************************************************************************************
+ *
  * Function: load_styles
  * 
  * Purpose: Enqueue Styles to avoid loading muliple times
