@@ -123,7 +123,7 @@ add_filter( 'body_class', 'add_slug_body_class' );
 function load_custom_styles() {
    
    // Load stylesheets
-   wp_enqueue_style('font_awesome', 'http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css');// Font Awesome
+   wp_enqueue_style('font_awesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css');// Font Awesome
    wp_enqueue_style('fancybox_styles', THEME_URL.'/js/vendor/fancybox/source/jquery.fancybox.css');// Fancybox CSS
    wp_enqueue_style('style', THEME_URL.'/style.css');// default styles
    
