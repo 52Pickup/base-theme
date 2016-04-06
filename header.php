@@ -32,11 +32,6 @@
   <!-- Google Analytics here -->
 
   <?php wp_head(); ?>
-
-  <!--[if lte IE 9]>
-	<link rel="stylesheet" href="<?php echo THEME_URL; ?>/css/ie.css">
-  <![endif]-->
-
 </head>
 
 <body <?php body_class(); ?>>
