@@ -38,7 +38,7 @@
 
 <!-- Mobile only -->
 <nav class="mobile-nav-menu">
-	<a class="mobile-logo" href="<?php echo home_url(); ?>"><img src="" alt="<?php bloginfo('name'); ?> logo"></a>
+	<a class="mobile-logo" href="<?php echo home_url(); ?>"><img src="<?php echo get_template_directory_uri();?>/img/" alt="<?php bloginfo('name'); ?> logo"></a>
 	<a class="mobile-menu-btn" href="#"><span></span>Menu</a>
 	<div class="mobile-menu-container">
 	<?php
