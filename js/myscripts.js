@@ -98,20 +98,74 @@ jQuery.fn.equalHeights = function(){
   $(colSelector).css('height', newHeight+'px');// Apply the tallest height to all columns
 }
 
-/*--------------------------------------------------------------
-DOCUMENT READY
---------------------------------------------------------------*/
-$(document).ready (function(){
-
-	addBrowserClass();
-
-  $('.mobile-menu-btn').click(function(){
+// mobile menu button and form focus bug fix. Break into two if need be.
+function OG(){
+    $('.mobile-menu-btn').click(function(){
     $(this).find('span').toggleClass('active');
     $(this).siblings('.mobile-menu-container').toggleClass('active');
     return false;
   });
   //fix for form focus bug on iphones
   if("iPad"==navigator.platform||"iPhone"==navigator.platform||"iPod"==navigator.platform||"Linux armv6l"==navigator.platform){var $body=jQuery("body");$(document).on("focus","input",function(){$body.addClass("fixfixed")}).on("blur","input",function(){$body.removeClass("fixfixed")})}
+}
+
+// this simply finds the page height and sets the chosen element to be full height of the screen
+function fullHeight(theElement){
+  var pgHeight = $(window).height();
+  $(theElement).css('height', pgHeight);
+  $(window).resize(function(){
+      var pgHeight = $(window).height();
+      $(theElement).css('height', pgHeight);
+  });
+}
+
+//clicking this element will cause the screen to animate the size of the screen
+function scrollClick(toClick){
+  var pageHeight = $(window).height();
+  $(toClick).click(function(){
+    $("html, body").animate({ scrollTop: pageHeight + 'px' }, 1000);
+  });
+}
+
+// This function gets the element, and the parent element and roughly centers it in the middle of the screen. You could probbaly change the -5 to be something else, or even improve this?
+function cEf(theParent, blockSize){
+  var cent = $(theParent).height();
+  var theBlock = $(blockSize).height();
+  $(blockSize).css('marginTop',(((cent - theBlock)/2)-5) + 'px');
+}
+
+//creates labels when none are in use on older browsers. IE9 special!
+  function placeholder(){
+    if(typeof document.createElement("input").placeholder == 'undefined') {
+      $('[placeholder]').focus(function() {
+        var input = $(this);
+        if (input.val() == input.attr('placeholder')) {
+          input.val('');
+          input.removeClass('placeholder');
+        }
+      }).blur(function() {
+        var input = $(this);
+        if (input.val() == '' || input.val() == input.attr('placeholder')) {
+          input.addClass('placeholder');
+          input.val(input.attr('placeholder'));
+        }
+      }).blur().parents('form').submit(function() {
+        $(this).find('[placeholder]').each(function() {
+          var input = $(this);
+          if (input.val() == input.attr('placeholder')) {
+            input.val('');
+          }
+      })
+    });
+  }
+}
+
+/*--------------------------------------------------------------
+DOCUMENT READY
+--------------------------------------------------------------*/
+$(document).ready (function(){
+	addBrowserClass();
+  OG();
 });
 
 /*--------------------------------------------------------------
